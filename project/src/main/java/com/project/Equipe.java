@@ -9,13 +9,14 @@ import lombok.Data;
 public class Equipe {
     private List<Estudante> membros;
     
+    public Equipe(){
+        this.membros = new ArrayList<>();
+    }
+    
     public void add(Estudante e){
         this.membros.add(e);
     }
     public List<Estudante> getMembros(){
         return membros;
-    }
-    public Equipe(){
-        this.membros = new ArrayList<>();
     }
 }

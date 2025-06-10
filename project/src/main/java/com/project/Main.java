@@ -99,7 +99,7 @@ public class Main {
         a1.getProjeto().setOrientador(ori1);
         a1.getProjeto().setEquipe(equipe1);
         a1.setBanca(b1);
-        a1.setDataHora(LocalDateTime.of(2025, Month.JUNE, 11, 10, 30));
+        a1.setDataHora(LocalDateTime.now());
         a1.setLocal(s2);
         
         Apresentacao a2 = new Apresentacao(p2, b2, s1, LocalDateTime.of(2025, Month.JUNE, 13, 13, 00));
