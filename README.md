@@ -4,6 +4,8 @@
 
 Este projeto consiste no desenvolvimento de um sistema em Java para gerenciar Hackathons Universitários promovidos anualmente por diferentes instituições. O foco principal é o gerenciamento de **Projetos** e **Equipes** participantes.
 
+##Diagrama UML
+![Diagrama UML](https://raw.githubusercontent.com/jjoaom/UniHackaton/refs/heads/main/docs/hackaton1.1.drawio.svg)
 
 ## Disciplina
 
