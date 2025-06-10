@@ -1,9 +1,11 @@
 package com.project;
+import java.util.ArrayList;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-
+@AllArgsConstructor
 public class Equipe {
     private List<Estudante> membros;
     
@@ -12,5 +14,8 @@ public class Equipe {
     }
     public List<Estudante> getMembros(){
         return membros;
+    }
+    public Equipe(){
+        this.membros = new ArrayList<>();
     }
 }

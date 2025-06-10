@@ -2,16 +2,11 @@ package com.project;
 
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class Main {
 
     public static void main(String[] args) {
         //Singleton de equipes e apresentacoes
-        Equipes equipes = Equipes.getInstance();
-        Apresentacoes apresentacoes = Apresentacoes.getInstance();
         
         //universidades
         Universidade ufmg = Universidade.builder().nome("Universidade Federal de Minas Gerais").cnpj("17.217.985/0001-04").build();
@@ -67,44 +62,55 @@ public class Main {
         equipe2.add(aluno10);
         
         //add ao singleton
-        equipes.addEquipe(equipe1);
-        equipes.addEquipe(equipe2);
+        Equipes.getInstance().addEquipe(equipe1);
+        Equipes.getInstance().addEquipe(equipe2);
         
         //projetos
-        Projeto p1 = new Projeto(ori1, equipe1);
-        Projeto p2 = new Projeto(ori2, equipe2);
+        Projeto p1 = new Projeto();
         
-        //jurados e maps
-        Map<Jurado,Integer> j1 = new HashMap<>();
-        Map<Jurado,Integer> j2 = new HashMap<>();
-        
-        j1.put(jur2, null);
-        j1.put(jur4, null);
-        j1.put(jur6, null);
-        j1.put(jur8, null);
-        
-        j2.put(jur1, null);
-        j2.put(jur3, null);
-        j2.put(jur5, null);
-        j2.put(jur7, null);
-        
+        Projeto p2 = new Projeto();
+                  
         //bancas       
-        Banca b1 = new Banca(p1, j1);
-        Banca b2 = new Banca(p2, j2);
+        Banca b1 = new Banca();
+        //map jurados 1 com notas nulas    
+        b1.getJurados().put(jur2, null);
+        b1.getJurados().put(jur4, null);
+        b1.getJurados().put(jur6, null);
+        b1.getJurados().put(jur8, null);
+        b1.getProjetoAvaliado().setProjeto(ori1, equipe1);
+        //pegar notas aleatorias
+        b1.obterNotaJurados();
+        
+        
+        Banca b2 = new Banca();
+        b2.getJurados().put(jur1, null);
+        b2.getJurados().put(jur3, null);
+        b2.getJurados().put(jur5, null);
+        b2.getJurados().put(jur7, null);
+        b2.obterNotaJurados();
+        b2.getProjetoAvaliado().setProjeto(ori2, equipe2);
         
         //salas
         Sala s1 = new Sala("11", "43");
         Sala s2 = new Sala("12", "43");
         
         //apresentacoes
+        Apresentacao a1 = new Apresentacao();
+        a1.getProjeto().setOrientador(ori1);
+        a1.getProjeto().setEquipe(equipe1);
+        a1.setBanca(b1);
+        a1.setDataHora(LocalDateTime.of(2025, Month.JUNE, 11, 10, 30));
+        a1.setLocal(s2);
         
-        Apresentacao a1 = new Apresentacao(p1, b1, s2, LocalDateTime.of(2025, Month.NOVEMBER, 9, 10, 30));
-        Apresentacao a2 = new Apresentacao(p2, b2, s1, LocalDateTime.of(2025, Month.OCTOBER, 13, 13, 00));
+        Apresentacao a2 = new Apresentacao(p2, b2, s1, LocalDateTime.of(2025, Month.JUNE, 13, 13, 00));
         
         //add ao singleton
-        apresentacoes.addApresentacao(a1);
-        apresentacoes.addApresentacao(a2);
+        Apresentacoes.getInstance().addApresentacao(a1);
+        Apresentacoes.getInstance().addApresentacao(a2);
         
+        Apresentacoes.getInstance().avaliarApresentacoes();
+        
+        Apresentacoes.getInstance().listarNotaMediaSete();
         
     }
 }

@@ -21,4 +21,15 @@ public class Apresentacoes {
     public List<Apresentacao> getApresentacoes(){
         return apresentacoes;
     }
+    public void avaliarApresentacoes(){
+        for(Apresentacao a : this.apresentacoes){
+            a.avaliar();
+        }
+    }
+    public void listarNotaMediaSete(){
+    this.apresentacoes.stream()
+        .filter(a -> a.getProjeto().getNotaFinal() >= 7)
+        .forEach(a -> System.out.println("Projeto: " + a.getProjeto().toString()));
+}
+
 }
