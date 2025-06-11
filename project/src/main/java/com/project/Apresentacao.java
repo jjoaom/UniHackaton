@@ -14,10 +14,6 @@ public class Apresentacao {
     private LocalDateTime dataHora;
         
     public void avaliar(){
-        if(LocalDateTime.now().equals(dataHora)){
-            this.banca.calcularNotaFinal();
-        }
-        System.out.println("Aguarde a data da apresentacao para avaliar.");
-        
+        this.banca.calcularNotaFinal();
     }
 }
